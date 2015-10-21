@@ -130,9 +130,10 @@ SELECT (@had = 0 AND @has = 1) as created;"
                 : server_connection.underlying_type().downcast_to<MySqlConnection>();
             
             var script = new MySqlScript(connection, sql_to_run);
+            script.apply_delimiter_and_remove_if_specified();
             script.Execute();
         }
-
+        
         public override string set_recovery_mode_script(bool simple)
         {
             return string.Empty;

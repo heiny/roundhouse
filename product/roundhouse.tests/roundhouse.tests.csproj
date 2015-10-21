@@ -132,6 +132,10 @@
       <Project>{35E058E3-8FEE-4107-AEDC-37A452C588EC}</Project>
       <Name>roundhouse.databases.access</Name>
     </ProjectReference>
+    <ProjectReference Include="..\roundhouse.databases.mysql\roundhouse.databases.mysql.csproj">
+      <Project>{71419dbb-4809-4102-a002-d484242fcfc9}</Project>
+      <Name>roundhouse.databases.mysql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\roundhouse.databases.oracle\roundhouse.databases.oracle.csproj">
       <Project>{3828D379-C96A-49C8-8BC9-0182CC8C55B1}</Project>
       <Name>roundhouse.databases.oracle</Name>

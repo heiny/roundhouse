@@ -67,8 +67,8 @@ namespace roundhouse.databases.mysql
                 var user_name = InteractivePrompt.get_user("root", configuration_property_holder);
                 var password = InteractivePrompt.get_password("root", configuration_property_holder);
                 InteractivePrompt.write_footer();
-                
-                connection_string = build_connection_string(server_name, database_name, port, user_name, password);
+
+                connection_string = build_connection_string(server_name, database_name, port, user_name, password, configuration_property_holder);
             }
 
             configuration_property_holder.ConnectionString = connection_string;
@@ -90,11 +90,11 @@ namespace roundhouse.databases.mysql
             provider = "MySql.Data.MySqlClient";
         }
 
-        private static string build_connection_string(string server_name, string database_name, string port, string user_name, string password)
+        private static string build_connection_string(string server_name, string database_name, string port, string user_name, string password, ConfigurationPropertyHolder configuration_property_holder)
         {
             // NOTE: allow user variables was a change
-            return string.Format("Server={0};Database={1};Port={2};Uid={3};Pwd={4};AllowUserVariables=true;", 
-                server_name, database_name, port, user_name, password);
+            return string.Format("Server={0};Database={1};Port={2};Uid={3};Pwd={4};AllowUserVariables=true;DefaultCommandTimeout={5}", 
+                server_name, database_name, port, user_name, password, configuration_property_holder.CommandTimeout);
         }
 
         public override string create_database_script()
